@@ -22,7 +22,7 @@ The React To-Do App is a simple yet functional task management application that 
 * Delete tasks from the list
 * Reset the entire task list
 
-The app leverages React's function-based components and state management using hooks to create a responsive and interactive user experience.
+The app leverages React's function-based components and state management using hooks such as `useState` and `useEffect` to create a responsive and interactive user experience.
 
 ## Features
 
@@ -30,6 +30,7 @@ The app leverages React's function-based components and state management using h
 * **Task Completion**: Toggle tasks as completed.
 * **Task Organization**: Move tasks up or down in the list.
 * **Pinning Tasks**: Pin tasks to keep them at the top of the list.
+* **Persistent Storage**: Tasks are saved in the browser's local storage to persist across page reloads.
 
 ## Technologies Used
 
