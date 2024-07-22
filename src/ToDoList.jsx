@@ -12,7 +12,8 @@ function ToDoList() {
 
     function addTask() {
         if (newTask.trim() !== "") {
-            if (!task.some(t => t.text.toLowerCase() === newTask.toLowerCase())) {
+            const taskCombined = [...pinnedTask, ...task];
+            if (!taskCombined.some(t => t.text.toLowerCase() === newTask.toLowerCase())) {
                 setTasks(t => [{ text: newTask, completed: false }, ...t]);
                 setNewTask("");
             } else {
