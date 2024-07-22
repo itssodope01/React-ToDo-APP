@@ -10,7 +10,6 @@ This is a simple To-Do application developed using React. It demonstrates the us
 * [Project Overview](#project-overview)
 * [Features](#features)
 * [Technologies Used](#technologies-used)
-* [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
@@ -40,31 +39,6 @@ The app leverages React's function-based components and state management using h
 * **React**: For building user interfaces and managing component states.
 * **JavaScript (ES6+)**: For modern JavaScript features and functionality.
 * **CSS**: For styling the application and creating a modern, user-friendly interface.
-
-## Installation
-
-To get started with the project locally, follow these steps:
-
-1. **Clone the Repository**
-
-```bash
-git clone https://github.com/yourusername/react-todo-app.git
-cd react-todo-app
-```
-
-2. **Install Dependencies**
-
-```bash
-npm install
-```
-
-3. **Start the Development Server**
-
-```bash
-npm start
-```
-
-The application should now be running on `http://localhost:3000`.
 
 ## Usage
 
