@@ -4,8 +4,6 @@
 
 This is a simple To-Do application developed using React. It demonstrates the use of React's function-based components and hooks to manage state and user interactions.
 
-**Deployed Application**: [React To-Do App](#)
-
 ## Table of Contents
 * [Project Overview](#project-overview)
 * [Features](#features)
