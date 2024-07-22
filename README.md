@@ -29,10 +29,9 @@ The app leverages React's function-based components and state management using h
 ## Features
 
 * **Task Management**: Add, delete, and reset tasks easily.
-* **Task Completion**: Toggle tasks as completed with a modern, styled checkbox.
+* **Task Completion**: Toggle tasks as completed.
 * **Task Organization**: Move tasks up or down in the list.
 * **Pinning Tasks**: Pin tasks to keep them at the top of the list.
-* **Task Filtering**: Display tasks with different completion statuses.
 
 ## Technologies Used
 
@@ -42,7 +41,12 @@ The app leverages React's function-based components and state management using h
 
 ## Usage
 
-[Add instructions on how to use the application, including any important user interactions or features]
+* **Add a Task**: Enter a task in the input field and press `Enter` or click the "+" button.
+* **Complete a Task**: Check the checkbox next to the task to mark it as completed.
+* **Pin a Task**: Click the "Pin" button to move a task to the pinned area.
+* **Move Tasks**: Use the "Up" and "Down" buttons to rearrange tasks.
+* **Delete a Task**: Click the "Delete" button to remove a task from the list.
+* **Reset List**: Click the "Reset List" button to clear all tasks.
 
 ## Contributing
 
