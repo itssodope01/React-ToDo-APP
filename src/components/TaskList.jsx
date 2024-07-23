@@ -1,11 +1,11 @@
 import React from 'react';
-import TaskComponent from './TaskComponent';
+import TaskItem from './TaskItem';
 
-function TaskListComponent({ tasks, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop }) {
+function TaskList({ tasks, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop }) {
     return (
         <ol className='todo-list'>
             {tasks.map((task, index) => (
-                <TaskComponent
+                <TaskItem
                     key={index}
                     task={task}
                     index={index}
@@ -14,11 +14,10 @@ function TaskListComponent({ tasks, toggleCompletion, deleteTask, moveTaskUp, mo
                     moveTaskUp={moveTaskUp}
                     moveTaskDown={moveTaskDown}
                     PinToTop={PinToTop}
-                    isPinned={false}
                 />
             ))}
         </ol>
     );
 }
 
-export default TaskListComponent;
+export default TaskList;

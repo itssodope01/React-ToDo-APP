@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import InputComponent from './components/InputComponent';
-import TaskListComponent from './components/TaskListComponent';
-import PinnedTaskListComponent from './components/PinnedTaskListComponent';
+import TaskInput from './components/TaskInput';
+import TaskList from './components/TaskList';
+import PinnedTaskList from './components/PinnedTaskList';
 
 function ToDoList() {
     const [task, setTasks] = useState([]);
@@ -43,12 +43,9 @@ function ToDoList() {
         }
     }
 
-    function deleteTask(index, isPinned) {
-        if (isPinned) {
-            setPinnedTask(pinnedTask.filter((_, i) => i !== index));
-        } else {
-            setTasks(task.filter((_, i) => i !== index));
-        }
+    function deleteTask(index, array, setter) {
+        const updatedTask = array.filter((_, i) => i !== index);
+        setter(updatedTask);
     }
 
     function moveTaskUp(index) {
@@ -75,8 +72,10 @@ function ToDoList() {
         if (task.length > 1) {
             const taskToPin = task[index];
             const filteredTasks = task.filter((_, i) => i !== index);
+            const updatedPinTask = [taskToPin, ...pinnedTask];
+
             setTasks(filteredTasks);
-            setPinnedTask([taskToPin, ...pinnedTask]);
+            setPinnedTask(updatedPinTask);
         }
     }
 
@@ -84,21 +83,18 @@ function ToDoList() {
         if (pinnedTask.length > 0) {
             const taskToUnpin = pinnedTask[index];
             const filteredPinTasks = pinnedTask.filter((_, i) => i !== index);
+            const updatedTask = [taskToUnpin, ...task];
+
+            setTasks(updatedTask);
             setPinnedTask(filteredPinTasks);
-            setTasks([taskToUnpin, ...task]);
         }
     }
 
-    function toggleCompletion(index, isPinned) {
-        if (isPinned) {
-            setPinnedTask(pinnedTask.map((task, i) =>
-                i === index ? { ...task, completed: !task.completed } : task
-            ));
-        } else {
-            setTasks(task.map((task, i) =>
-                i === index ? { ...task, completed: !task.completed } : task
-            ));
-        }
+    function toggleCompletion(index, array, setter) {
+        const updatedArray = array.map((task, i) =>
+            i === index ? { ...task, completed: !task.completed } : task
+        );
+        setter(updatedArray);
     }
 
     function resetList() {
@@ -107,37 +103,39 @@ function ToDoList() {
     }
 
     return (
-        <>
-            <div className='todo-container'>
-                <h1>ToDo List</h1>
-                <InputComponent
-                    newTask={newTask}
-                    handleInputChange={handleInputChange}
-                    handleKeyDown={handleKeyDown}
-                    addTask={addTask}
-                />
-                <button
-                    className='reset-button'
-                    onClick={resetList}
-                >
-                    Reset List
-                </button>
-                <PinnedTaskListComponent
-                    pinnedTasks={pinnedTask}
-                    toggleCompletion={(index) => toggleCompletion(index, true)}
-                    deleteTask={(index) => deleteTask(index, true)}
-                    unpinTask={unpinTask}
-                />
-                <TaskListComponent
-                    tasks={task}
-                    toggleCompletion={(index) => toggleCompletion(index, false)}
-                    deleteTask={(index) => deleteTask(index, false)}
-                    moveTaskUp={moveTaskUp}
-                    moveTaskDown={moveTaskDown}
-                    PinToTop={PinToTop}
-                />
-            </div>
-        </>
+        <div className='todo-container'>
+            <h1>ToDo List</h1>
+
+            <TaskInput
+                newTask={newTask}
+                handleInputChange={handleInputChange}
+                handleKeyDown={handleKeyDown}
+                addTask={addTask}
+            />
+
+            <button
+                className='reset-button'
+                onClick={resetList}
+            >
+                Reset List
+            </button>
+
+            <PinnedTaskList
+                pinnedTasks={pinnedTask}
+                toggleCompletion={(index) => toggleCompletion(index, pinnedTask, setPinnedTask)}
+                deleteTask={(index) => deleteTask(index, pinnedTask, setPinnedTask)}
+                unpinTask={unpinTask}
+            />
+
+            <TaskList
+                tasks={task}
+                toggleCompletion={(index) => toggleCompletion(index, task, setTasks)}
+                deleteTask={(index) => deleteTask(index, task, setTasks)}
+                moveTaskUp={moveTaskUp}
+                moveTaskDown={moveTaskDown}
+                PinToTop={PinToTop}
+            />
+        </div>
     );
 }
 

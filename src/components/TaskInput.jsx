@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InputComponent({ newTask, handleInputChange, handleKeyDown, addTask }) {
+function TaskInput({ newTask, handleInputChange, handleKeyDown, addTask }) {
     return (
         <div className='input-div'>
             <input
@@ -20,4 +20,4 @@ function InputComponent({ newTask, handleInputChange, handleKeyDown, addTask }) 
     );
 }
 
-export default InputComponent;
+export default TaskInput;

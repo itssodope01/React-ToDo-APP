@@ -1,22 +1,21 @@
 import React from 'react';
-import TaskComponent from './TaskComponent';
+import PinnedTaskItem from './PinnedTaskItem';
 
-function PinnedTaskListComponent({ pinnedTasks, toggleCompletion, deleteTask, unpinTask }) {
+function PinnedTaskList({ pinnedTasks, toggleCompletion, deleteTask, unpinTask }) {
     return (
         <ol className='todo-pin'>
             {pinnedTasks.map((task, index) => (
-                <TaskComponent
+                <PinnedTaskItem
                     key={index}
                     task={task}
                     index={index}
                     toggleCompletion={toggleCompletion}
                     deleteTask={deleteTask}
                     unpinTask={unpinTask}
-                    isPinned={true}
                 />
             ))}
         </ol>
     );
 }
 
-export default PinnedTaskListComponent;
+export default PinnedTaskList;
