@@ -30,6 +30,7 @@ function ToDoList() {
             if (!taskCombined.some(t => t.text.toLowerCase() === newTask.toLowerCase())) {
                 setTasks(t => [{ text: newTask, completed: false }, ...t]);
                 setNewTask("");
+
             } else {
                 alert(`"${newTask}" is already added on the list!`);
             }
@@ -45,7 +46,11 @@ function ToDoList() {
 
     function deleteTask(index, array, setter) {
         const updatedTask = array.filter((_, i) => i !== index);
-        setter(updatedTask);
+        const type = (setter === setTasks) ? 'task' : 'pinned-task';
+        animateTask(index, type, "right");
+        setTimeout(() => {
+            setter(updatedTask);
+        },150);  
     }
 
     function moveTaskUp(index) {
@@ -69,13 +74,17 @@ function ToDoList() {
     }
 
     function PinToTop(index) {
-        if (task.length > 1) {
-            const taskToPin = task[index];
-            const filteredTasks = task.filter((_, i) => i !== index);
-            const updatedPinTask = [taskToPin, ...pinnedTask];
-
-            setTasks(filteredTasks);
-            setPinnedTask(updatedPinTask);
+        const taskCombined = [...pinnedTask, ...task];
+        if (taskCombined.length > 1) {
+            animateTask(index, 'task', "left");
+            setTimeout(() => {
+                const taskToPin = task[index];
+                const filteredTasks = task.filter((_, i) => i !== index);
+                const updatedPinTask = [taskToPin, ...pinnedTask];
+    
+                setTasks(filteredTasks);
+                setPinnedTask(updatedPinTask);
+            }, 150);
         }
     }
 
@@ -87,6 +96,7 @@ function ToDoList() {
 
             setTasks(updatedTask);
             setPinnedTask(filteredPinTasks);
+
         }
     }
 
@@ -101,6 +111,37 @@ function ToDoList() {
         setTasks([]);
         setPinnedTask([]);
     }
+
+    function animateTask(index, type, direction) {
+        const taskId = `${type}-${index}`;
+        const task = document.getElementById(taskId);
+      
+        if (!task) {
+          console.warn(`Task element with id "${taskId}" not found.`);
+          return;
+        }
+      
+        const animationClass = direction === "right" ? 'slide-right' : 'slide-task';
+        const animationDuration = 150;
+      
+        function addAndRemoveClass() {
+          task.classList.add(animationClass);
+          
+          setTimeout(() => {
+            task.classList.remove(animationClass);
+            if (direction === "right") {
+              task.style.transform = '';
+            }
+          }, animationDuration);
+        }
+      
+        if (direction === "right") {
+          // Use requestAnimationFrame for smoother animation
+          requestAnimationFrame(addAndRemoveClass);
+        } else {
+          addAndRemoveClass();
+        }
+      }
 
     return (
         <div className='todo-container'>
@@ -120,6 +161,8 @@ function ToDoList() {
                 Reset List
             </button>
 
+            <div className='task-container'>
+
             <PinnedTaskList
                 pinnedTasks={pinnedTask}
                 toggleCompletion={(index) => toggleCompletion(index, pinnedTask, setPinnedTask)}
@@ -135,6 +178,7 @@ function ToDoList() {
                 moveTaskDown={moveTaskDown}
                 PinToTop={PinToTop}
             />
+            </div>
         </div>
     );
 }

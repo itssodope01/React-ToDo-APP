@@ -1,6 +1,7 @@
 import React from 'react';
 
 function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop }) {
+
     return (
         <li>
             <div className='checkbox-container'>
@@ -36,7 +37,9 @@ function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveT
                 </button>
                 <button
                     className='pin-button'
-                    onClick={() => PinToTop(index)}
+                    onClick={() => 
+                        PinToTop(index)
+                    }
                 >
                     <i className="fas fa-thumbtack"></i>
                 </button>
