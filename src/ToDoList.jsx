@@ -136,7 +136,6 @@ function ToDoList() {
         }
       
         if (direction === "right") {
-          // Use requestAnimationFrame for smoother animation
           requestAnimationFrame(addAndRemoveClass);
         } else {
           addAndRemoveClass();
