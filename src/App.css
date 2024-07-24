@@ -14,7 +14,6 @@
   overflow: hidden;
 }
 
-
 h1 {
   color: #333;
   margin-bottom: 20px;
@@ -196,11 +195,9 @@ button {
 }
 
 .reset-button:hover {
-  background-color: #ccc;
+  background-color: #1d1d1d;
   color: #fff;
 }
-
-
 
 .slide-task {
   transition: transform 0.17s ease;
@@ -236,5 +233,3 @@ button {
   right: 15%;
   text-align: center;
 }
-
-

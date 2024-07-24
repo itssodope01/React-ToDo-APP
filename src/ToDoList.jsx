@@ -167,7 +167,7 @@ function ToDoList() {
 
     return (
         <div className='todo-container'>
-            <h1>ToDo List</h1>
+            <h1>To<span style={{color: 'royalblue'}}>Do</span> List</h1>
 
             <TaskInput
                 newTask={newTask}
@@ -181,7 +181,7 @@ function ToDoList() {
                 className='reset-button'
                 onClick={resetList}
             >
-                Reset List
+                <i className="fas fa-undo"></i> Reset List
             </button>
 
             <div className='task-container'>

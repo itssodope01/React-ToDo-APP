@@ -20,24 +20,28 @@ function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveT
                 <button
                     className='edit-button'
                     onClick={() => handleEdit(index, 'setTasks')}
+                    title='Edit Task'
                 >
                     <i className="fas fa-edit"></i>
                 </button>
                 <button
                     className='delete-button'
                     onClick={() => deleteTask(index)}
+                    title='Delete Task'
                 >
                     <i className="fas fa-trash"></i>
                 </button>
                 <button
                     className='up-button'
                     onClick={() => moveTaskUp(index)}
+                    title='Move Up'
                 >
                     <i className="fas fa-chevron-up"></i>
                 </button>
                 <button
                     className='down-button'
                     onClick={() => moveTaskDown(index)}
+                    title='Move Down'
                 >
                     <i className="fas fa-chevron-down"></i>
                 </button>
@@ -46,6 +50,7 @@ function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveT
                     onClick={() => 
                         PinToTop(index)
                     }
+                    title='Pin Task'
                 >
                     <i className="fas fa-thumbtack"></i>
                 </button>

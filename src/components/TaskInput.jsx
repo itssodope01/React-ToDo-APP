@@ -13,6 +13,7 @@ function TaskInput({ newTask, handleInputChange, handleKeyDown, addTask }) {
             <button
                 className='add-button'
                 onClick={addTask}
+                title='Add Task'
             >
                 <i className="fas fa-plus"></i>
             </button>
