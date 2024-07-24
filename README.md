@@ -16,6 +16,7 @@ This is a simple To-Do application developed using React. It demonstrates the us
 
 The React To-Do App is a simple yet functional task management application that allows users to:
 * Add new tasks to the list
+* Edit tasks to the list
 * Mark tasks as completed
 * Pin tasks to the top of the list
 * Move tasks up or down in the list
@@ -26,7 +27,7 @@ The app leverages React's function-based components and state management using h
 
 ## Features
 
-* **Task Management**: Add, delete, and reset tasks easily.
+* **Task Management**: Add, delete, edit, and reset tasks easily.
 * **Task Completion**: Toggle tasks as completed.
 * **Task Organization**: Move tasks up or down in the list.
 * **Pinning Tasks**: Pin tasks to keep them at the top of the list.
@@ -41,6 +42,7 @@ The app leverages React's function-based components and state management using h
 ## Usage
 
 * **Add a Task**: Enter a task in the input field and press `Enter` or click the "+" button.
+* **Edit a Task**: Click on the edit button to edit any task on the list, you will be prompted to modify the task content. Press `Enter` to save edit.
 * **Complete a Task**: Check the checkbox next to the task to mark it as completed.
 * **Pin a Task**: Click the "Pin" button to move a task to the pinned area.
 * **Move Tasks**: Use the "Up" and "Down" buttons to rearrange tasks.
