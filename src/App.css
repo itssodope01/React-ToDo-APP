@@ -195,6 +195,13 @@ button {
   margin-bottom: 10px;
 }
 
+.reset-button:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+
+
 .slide-task {
   transition: transform 0.17s ease;
   transform: translateX(-100%);
@@ -209,13 +216,25 @@ button {
   }
 }
 
-/* #task-0{
-  transform: translateX(-100%);
-  animation: slideRight 0.3s ease-in-out 0s 1 normal forwards;
-} */
-
 .slide-right {
   animation: slideRight 0.15s ease-in-out 0s 1 normal forwards;
+}
+
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.fa-stack-1x {
+  position: absolute;
+  width: 100%;
+  bottom: 15%;
+  right: 15%;
+  text-align: center;
 }
 
 

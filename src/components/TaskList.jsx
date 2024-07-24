@@ -1,12 +1,12 @@
 import React from 'react';
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop }) {
+function TaskList({ tasks, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop, handleEdit }) {
     return (
         
         <ol className='todo-list'>
             {tasks.map((task, index) => (
-                <div className='taskItem' id={`task-${index}`}>
+                <div className='taskItem' id={`task-${index}`} key={index}>
                 <TaskItem
                     key={index}
                     task={task}
@@ -16,6 +16,7 @@ function TaskList({ tasks, toggleCompletion, deleteTask, moveTaskUp, moveTaskDow
                     moveTaskUp={moveTaskUp}
                     moveTaskDown={moveTaskDown}
                     PinToTop={PinToTop}
+                    handleEdit={handleEdit}
                 />
                 </div>
             ))}

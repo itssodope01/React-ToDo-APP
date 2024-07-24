@@ -1,8 +1,8 @@
 import React from 'react';
 
-function PinnedTaskItem({ task, index, toggleCompletion, deleteTask, unpinTask }) {
+function PinnedTaskItem({ task, index, toggleCompletion, deleteTask, unpinTask, handleEdit }) {
     return (
-        <li>
+        <li key={index}>
             <div className='checkbox-container'>
                 <input
                     id={`pinned-task-checkbox-${index}`}
@@ -17,6 +17,12 @@ function PinnedTaskItem({ task, index, toggleCompletion, deleteTask, unpinTask }
             </span>
             <div className='button-container'>
                 <button
+                    className='edit-button'
+                    onClick={() => handleEdit(index)}
+                >
+                    <i className="fas fa-edit"></i>
+                </button>
+                <button
                     className='delete-button'
                     onClick={() => deleteTask(index)}
                 >
@@ -26,7 +32,10 @@ function PinnedTaskItem({ task, index, toggleCompletion, deleteTask, unpinTask }
                     className='unpin-button'
                     onClick={() => unpinTask(index)}
                 >
-                    Unpin
+                    <span className="fa-stack">
+                        <i className="fas fa-thumbtack"></i>
+                        <i className="fas fa-slash fa-stack-1x"></i>
+                    </span>
                 </button>
             </div>
         </li>

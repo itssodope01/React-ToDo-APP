@@ -112,6 +112,29 @@ function ToDoList() {
         setPinnedTask([]);
     }
 
+    function handleEdit(index, setter) {
+
+        const array = (setter === 'setTasks') ? task : pinnedTask;
+
+        const taskToEdit = array[index];
+        const newContent = prompt("Edit task:", taskToEdit.text);
+        if (newContent === null) {
+            return;
+        }
+        if (newContent.trim() === "") {
+            alert("Task cannot be empty!");
+            return;
+        }
+        editTask(index, array, setter, newContent);
+    }
+
+    function editTask(index, array, setter, newContent) {
+        const updatedArray = array.map((task, i) =>
+            i === index ? { ...task, text: newContent } : task
+        );
+        setter === 'setTasks' ? setTasks(updatedArray) : setPinnedTask(updatedArray);
+    }
+
     function animateTask(index, type, direction) {
         const taskId = `${type}-${index}`;
         const task = document.getElementById(taskId);
@@ -136,7 +159,6 @@ function ToDoList() {
         }
       
         if (direction === "right") {
-          // Use requestAnimationFrame for smoother animation
           requestAnimationFrame(addAndRemoveClass);
         } else {
           addAndRemoveClass();
@@ -152,6 +174,7 @@ function ToDoList() {
                 handleInputChange={handleInputChange}
                 handleKeyDown={handleKeyDown}
                 addTask={addTask}
+                
             />
 
             <button
@@ -168,6 +191,7 @@ function ToDoList() {
                 toggleCompletion={(index) => toggleCompletion(index, pinnedTask, setPinnedTask)}
                 deleteTask={(index) => deleteTask(index, pinnedTask, setPinnedTask)}
                 unpinTask={unpinTask}
+                handleEdit={handleEdit}
             />
 
             <TaskList
@@ -177,6 +201,7 @@ function ToDoList() {
                 moveTaskUp={moveTaskUp}
                 moveTaskDown={moveTaskDown}
                 PinToTop={PinToTop}
+                handleEdit={handleEdit}
             />
             </div>
         </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop }) {
+function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveTaskDown, PinToTop, handleEdit }) {
 
     return (
-        <li>
+        <li key={index}>
             <div className='checkbox-container'>
                 <input
                     id={`task-checkbox-${index}`}
@@ -17,6 +17,12 @@ function TaskItem({ task, index, toggleCompletion, deleteTask, moveTaskUp, moveT
                 {task.text}
             </span>
             <div className='button-container'>
+                <button
+                    className='edit-button'
+                    onClick={() => handleEdit(index, 'setTasks')}
+                >
+                    <i className="fas fa-edit"></i>
+                </button>
                 <button
                     className='delete-button'
                     onClick={() => deleteTask(index)}
